@@ -1,0 +1,40 @@
+import 'package:base_bloc/base_bloc.dart';
+import 'package:flutter/material.dart';
+import './${bloc_camel_case}_bloc.dart';
+import './${bloc_camel_case}_state.dart';
+
+class ${bloc_camel_case}Widget extends StatefulWidget{
+  @override
+  State<StatefulWidget> createState() {
+    return ${bloc_camel_case}WidgetState();
+  }
+}
+
+class ${bloc_camel_case}WidgetState extends BaseBlocState<${bloc_camel_case}Widget> {
+
+  BuildContext _context;
+
+  @override
+  Widget build(BuildContext context) => BaseBlocBuilder<${bloc_camel_case}State>(bloc, _buildBody);
+
+  @override
+  BaseBloc createBloc() => ${bloc_camel_case}Bloc();
+
+  Widget _buildBody(BuildContext context, ${bloc_camel_case}State state) {
+
+    return SafeArea(
+      bottom: false, top: false,
+      child: Scaffold(
+        body: Builder(builder: (BuildContext context) {
+          _context = context;
+          return Container(
+            child: Center(
+              child: Text("${bloc_camel_case} Widget"),
+            ),
+          );
+        }),
+      )
+    );
+  }
+
+}
